@@ -20,8 +20,8 @@ const envSchema = z.object({
   // Database
   DATABASE_URL: z.string(),
   
-  // Redis
-  REDIS_URL: z.string().default('redis://localhost:6379'),
+  // Optional Redis (for backwards compatibility)
+  REDIS_URL: z.string().optional(),
   
   // JWT
   JWT_SECRET: z.string().min(32),
@@ -31,12 +31,12 @@ const envSchema = z.object({
   // Password hashing
   BCRYPT_SALT_ROUNDS: z.string().transform(Number).default('12'),
   
-  // Storage (S3/MinIO)
-  S3_ENDPOINT: z.string().default('http://localhost:9000'),
-  S3_ACCESS_KEY: z.string(),
-  S3_SECRET_KEY: z.string(),
-  S3_BUCKET: z.string().default('documents'),
-  S3_REGION: z.string().default('us-east-1'),
+  // Optional Storage (S3/MinIO for backwards compatibility)
+  S3_ENDPOINT: z.string().optional().default('http://localhost:9000'),
+  S3_ACCESS_KEY: z.string().optional().default('minioadmin'),
+  S3_SECRET_KEY: z.string().optional().default('minioadmin'),
+  S3_BUCKET: z.string().optional().default('documents'),
+  S3_REGION: z.string().optional().default('us-east-1'),
   
   // AI Provider
   OPENAI_API_KEY: z.string(),

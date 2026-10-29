@@ -1,61 +1,62 @@
-// Server: MinIO/S3-compatible storage service
+// Server: Local filesystem storage service (Node.js native — no external MinIO/S3 needed)
 
-import { Client as MinioClient } from 'minio';
-import { config } from '../config/index.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { Readable } from 'stream';
 import { logger } from '../config/logger.js';
 
-const endpoint = new URL(config.S3_ENDPOINT);
-
-const minio = new MinioClient({
-  endPoint: endpoint.hostname,
-  port: parseInt(endpoint.port || '9000'),
-  useSSL: config.S3_ENDPOINT.startsWith('https'),
-  accessKey: config.S3_ACCESS_KEY,
-  secretKey: config.S3_SECRET_KEY,
-});
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const UPLOAD_ROOT = path.resolve(__dirname, '../../../uploads');
 
 export const storageService = {
   /**
-   * Ensure the configured bucket exists, creating it if needed.
+   * Ensure local uploads directory exists.
    */
-  async createBucketIfNotExists() {
+  async createBucketIfNotExists(): Promise<void> {
     try {
-      const exists = await minio.bucketExists(config.S3_BUCKET);
-      if (!exists) {
-        await minio.makeBucket(config.S3_BUCKET, config.S3_REGION);
-        logger.info(`Bucket "${config.S3_BUCKET}" created.`);
-      } else {
-        logger.debug(`Bucket "${config.S3_BUCKET}" already exists.`);
-      }
+      await fs.promises.mkdir(UPLOAD_ROOT, { recursive: true });
+      logger.info(`Local storage directory ready: ${UPLOAD_ROOT}`);
     } catch (err) {
-      logger.error({ err }, 'Failed to initialize storage bucket');
+      logger.error({ err }, 'Failed to initialize local storage directory');
       throw err;
     }
   },
 
   /**
-   * Upload a file buffer to storage.
+   * Upload a file buffer to local filesystem storage.
    */
-  async uploadFile(buffer: Buffer, key: string, mimetype: string) {
-    await minio.putObject(config.S3_BUCKET, key, buffer, buffer.length, {
-      'Content-Type': mimetype,
-    });
-    logger.debug({ key }, 'File uploaded to storage');
+  async uploadFile(buffer: Buffer, key: string, mimetype: string): Promise<void> {
+    const filePath = path.join(UPLOAD_ROOT, key);
+    await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
+    await fs.promises.writeFile(filePath, buffer);
+    logger.debug({ key, filePath }, 'File saved to local storage');
   },
 
   /**
-   * Download a file from storage as a readable stream.
+   * Download a file from local filesystem storage as a readable stream.
    */
-  async getFile(key: string) {
-    const stream = await minio.getObject(config.S3_BUCKET, key);
-    return stream;
+  async getFile(key: string): Promise<Readable> {
+    const filePath = path.join(UPLOAD_ROOT, key);
+    if (!fs.existsSync(filePath)) {
+      throw new Error(`File not found in storage: ${key}`);
+    }
+    return fs.createReadStream(filePath);
   },
 
   /**
-   * Delete a file from storage.
+   * Delete a file from local filesystem storage.
    */
-  async deleteFile(key: string) {
-    await minio.removeObject(config.S3_BUCKET, key);
-    logger.debug({ key }, 'File deleted from storage');
+  async deleteFile(key: string): Promise<void> {
+    const filePath = path.join(UPLOAD_ROOT, key);
+    try {
+      if (fs.existsSync(filePath)) {
+        await fs.promises.unlink(filePath);
+        logger.debug({ key }, 'File deleted from local storage');
+      }
+    } catch (err) {
+      logger.warn({ err, key }, 'Could not delete file from local storage');
+    }
   },
 };
