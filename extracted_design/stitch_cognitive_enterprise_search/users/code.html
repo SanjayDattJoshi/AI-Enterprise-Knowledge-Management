@@ -1,0 +1,168 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f7f9fb;}body{overscroll-behavior:none;min-height:100vh;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;transition:all 0.2s ease;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#f7f9fb","surface-variant":"#e0e3e5","on-tertiary-fixed-variant":"#005236","outline":"#75777d","on-error-container":"#93000a","secondary-fixed":"#d8e2ff","surface-tint":"#545f73","outline-variant":"#c5c6cd","error":"#ba1a1a","tertiary":"#00190e","on-primary":"#ffffff","surface-container-highest":"#e0e3e5","surface-dim":"#d8dadc","primary-container":"#1e293b","on-secondary":"#ffffff","surface-container":"#eceef0","surface":"#f7f9fb","secondary-container":"#2170e4","on-secondary-container":"#fefcff","on-primary-fixed":"#111c2d","on-primary-fixed-variant":"#3c475a","on-error":"#ffffff","primary":"#091426","surface-container-lowest":"#ffffff","on-surface":"#191c1e","secondary":"#0058be","inverse-on-surface":"#eff1f3","error-container":"#ffdad6","tertiary-fixed-dim":"#4edea3","on-secondary-fixed":"#001a42","surface-container-high":"#e6e8ea","on-tertiary-fixed":"#002113","secondary-fixed-dim":"#adc6ff","on-surface-variant":"#45474c","on-background":"#191c1e","surface-container-low":"#f2f4f6","tertiary-fixed":"#6ffbbe","inverse-surface":"#2d3133","on-primary-container":"#8590a6","on-tertiary-container":"#00a472","background":"#f7f9fb","inverse-primary":"#bcc7de","on-tertiary":"#ffffff","primary-fixed-dim":"#bcc7de","tertiary-container":"#00301e","on-secondary-fixed-variant":"#004395"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{xs:"4px",gutter:"24px",xxl:"48px",md:"16px","container-margin":"32px",lg:"24px",xl:"32px",base:"4px",sm:"8px"},fontFamily:{"body-sm":["Inter"],"headline-md":["Plus Jakarta Sans"],"body-lg":["Inter"],"display-lg":["Plus Jakarta Sans"],"body-md":["Inter"],"label-md":["Inter"],"headline-lg-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"title-lg":["Plus Jakarta Sans"]},fontSize:{"body-sm":["14px",{lineHeight:"20px",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"display-lg":["48px",{lineHeight:"60px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.05em",fontWeight:"600"}],"headline-lg-mobile":["28px",{lineHeight:"36px",fontWeight:"600"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"600"}],"title-lg":["20px",{lineHeight:"28px",fontWeight:"600"}]}}}}</script></head><body class="bg-surface font-body-md flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-container-margin flex items-center justify-between"><div class="flex items-center gap-sm"><div class="w-8 h-8 bg-primary rounded-xl flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">hub</span></div><span class="font-title-lg text-title-lg text-on-surface tracking-tight">KNOWLEDGE</span></div><div class="flex items-center gap-md"><button class="w-8 h-8 flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined">search</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-xxl bg-surface"><div class="flex flex-col w-full relative">
+<div class="px-container-margin py-lg flex justify-between items-center bg-surface sticky top-0 z-10 shadow-sm">
+<div class="flex items-center gap-md w-full relative">
+<span class="material-symbols-outlined text-outline absolute left-md">search</span>
+<input class="w-full bg-surface-container-highest text-on-surface placeholder:text-outline h-12 pl-12 pr-md rounded-full font-body-md shadow-inner focus:outline-none focus:ring-2 focus:ring-primary transition-shadow" placeholder="Search users by name or email..." type="text"/>
+</div>
+<button class="ml-md h-12 px-lg bg-primary text-on-primary rounded-full font-label-md flex items-center justify-center gap-xs shadow-md whitespace-nowrap active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="hidden md:inline">Add User</span>
+</button>
+</div>
+<div class="px-container-margin pb-xxl flex flex-col gap-md" id="user-list">
+<!-- User Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-md flex flex-col gap-sm shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group user-card" data-status="active">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-title-lg shadow-sm">
+                    EJ
+                </div>
+<div>
+<h3 class="font-title-lg text-on-surface">Eleanor Jenkins</h3>
+<p class="font-body-sm text-on-surface-variant">e.jenkins@acme.corp</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="px-sm py-xs bg-primary-container text-on-primary-container rounded-sm font-label-md tracking-wider">ADMIN</span>
+<div class="flex items-center gap-xs mt-1">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim status-indicator"></div>
+<span class="font-label-md text-on-surface-variant uppercase status-text">Active</span>
+</div>
+</div>
+</div>
+<div class="h-px w-full bg-surface-variant mt-sm mb-xs"></div>
+<div class="flex justify-end gap-md">
+<button class="text-secondary font-label-md hover:opacity-80 transition-opacity">Edit</button>
+<button class="text-error font-label-md hover:opacity-80 transition-opacity toggle-btn" onclick="toggleStatus(this)">Disable</button>
+</div>
+</div>
+<!-- User Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-md flex flex-col gap-sm shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group user-card" data-status="active">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<img class="w-12 h-12 rounded-full object-cover shadow-sm" data-alt="Professional headshot of a young man with glasses, smiling slightly, wearing a neutral gray sweater, shot on a plain light background, corporate modern aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnmI_boryetQZICGd6FS83O0ruN4WxRW3rl6g838yMJBGPOj3zLTENgVGTtArr-SRvh829CZiB076Udymac-6TfUbicHd8pUsKJ3m7UtdVOrSGuXgMy3ITLlq3uLUum3ryeAlzyaQvL0EyzZW8I8HQkOCs5QOloANk86eR3ngx1L-UDFVGqf1gjDPc3DWU6Mo9ZGPfOhXXpY59GT2hy9ur5CjSi3gfjqPK8gb1Kn0jReIm6tuyYg"/>
+<div>
+<h3 class="font-title-lg text-on-surface">Marcus Thorne</h3>
+<p class="font-body-sm text-on-surface-variant">m.thorne@acme.corp</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant rounded-sm font-label-md tracking-wider">EMPLOYEE</span>
+<div class="flex items-center gap-xs mt-1">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim status-indicator"></div>
+<span class="font-label-md text-on-surface-variant uppercase status-text">Active</span>
+</div>
+</div>
+</div>
+<div class="h-px w-full bg-surface-variant mt-sm mb-xs"></div>
+<div class="flex justify-end gap-md">
+<button class="text-secondary font-label-md hover:opacity-80 transition-opacity">Edit</button>
+<button class="text-error font-label-md hover:opacity-80 transition-opacity toggle-btn" onclick="toggleStatus(this)">Disable</button>
+</div>
+</div>
+<!-- User Card 3 (Disabled) -->
+<div class="bg-surface-container-lowest rounded-xl p-md flex flex-col gap-sm shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group user-card opacity-60 grayscale-[0.5]" data-status="disabled">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-title-lg shadow-sm">
+                    SL
+                </div>
+<div>
+<h3 class="font-title-lg text-on-surface line-through decoration-on-surface-variant/50">Sarah Lin</h3>
+<p class="font-body-sm text-on-surface-variant">s.lin@acme.corp</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant rounded-sm font-label-md tracking-wider">EMPLOYEE</span>
+<div class="flex items-center gap-xs mt-1">
+<div class="w-2 h-2 rounded-full bg-error status-indicator"></div>
+<span class="font-label-md text-error uppercase status-text">Disabled</span>
+</div>
+</div>
+</div>
+<div class="h-px w-full bg-surface-variant mt-sm mb-xs"></div>
+<div class="flex justify-end gap-md">
+<button class="text-secondary font-label-md hover:opacity-80 transition-opacity">Edit</button>
+<button class="text-secondary font-label-md hover:opacity-80 transition-opacity toggle-btn" onclick="toggleStatus(this)">Enable</button>
+</div>
+</div>
+<!-- User Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-md flex flex-col gap-sm shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group user-card" data-status="active">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<img class="w-12 h-12 rounded-full object-cover shadow-sm" data-alt="Professional headshot of a middle-aged woman with short dark hair, wearing a navy blazer, confident expression, corporate modern aesthetic, soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9z5bmYPiovyUXm1ZwbnbGiLZmNihb97N4HxzPeAW15NcKqV9TIdSbODUQx-UI3WpGPoRMyKOb2-0lRaRvQPnY62R0PPqY5cdhyUt-vrRIKZsF99WDpdu4jQqdubPl0AKvnjIuSDwwAa7PTrxqcwTRzMfaQaaQbIB-boaZ_mk00FzTV0cu6R7_kARWFy1XEG1ac8mCY2qEazR3JGTAcyEQO0gbnlDJJNuCXHnbeyWudcWBj9wPEQ"/>
+<div>
+<h3 class="font-title-lg text-on-surface">Dr. Amina Rossi</h3>
+<p class="font-body-sm text-on-surface-variant">a.rossi@acme.corp</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="px-sm py-xs bg-primary-container text-on-primary-container rounded-sm font-label-md tracking-wider">ADMIN</span>
+<div class="flex items-center gap-xs mt-1">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim status-indicator"></div>
+<span class="font-label-md text-on-surface-variant uppercase status-text">Active</span>
+</div>
+</div>
+</div>
+<div class="h-px w-full bg-surface-variant mt-sm mb-xs"></div>
+<div class="flex justify-end gap-md">
+<button class="text-secondary font-label-md hover:opacity-80 transition-opacity">Edit</button>
+<button class="text-error font-label-md hover:opacity-80 transition-opacity toggle-btn" onclick="toggleStatus(this)">Disable</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function toggleStatus(btn) {
+    const card = btn.closest('.user-card');
+    const isCurrentlyActive = card.getAttribute('data-status') === 'active';
+    const indicator = card.querySelector('.status-indicator');
+    const text = card.querySelector('.status-text');
+    const name = card.querySelector('h3');
+    
+    if (isCurrentlyActive) {
+      card.setAttribute('data-status', 'disabled');
+      card.classList.add('opacity-60', 'grayscale-[0.5]');
+      indicator.classList.remove('bg-tertiary-fixed-dim');
+      indicator.classList.add('bg-error');
+      text.textContent = 'Disabled';
+      text.classList.remove('text-on-surface-variant');
+      text.classList.add('text-error');
+      name.classList.add('line-through', 'decoration-on-surface-variant/50');
+      btn.textContent = 'Enable';
+      btn.classList.remove('text-error');
+      btn.classList.add('text-secondary');
+    } else {
+      card.setAttribute('data-status', 'active');
+      card.classList.remove('opacity-60', 'grayscale-[0.5]');
+      indicator.classList.remove('bg-error');
+      indicator.classList.add('bg-tertiary-fixed-dim');
+      text.textContent = 'Active';
+      text.classList.remove('text-error');
+      text.classList.add('text-on-surface-variant');
+      name.classList.remove('line-through', 'decoration-on-surface-variant/50');
+      btn.textContent = 'Disable';
+      btn.classList.remove('text-secondary');
+      btn.classList.add('text-error');
+    }
+  }
+
+  // Simple search filter
+  const searchInput = document.querySelector('input[type="text"]');
+  searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll('.user-card');
+    
+    cards.forEach(card => {
+      const name = card.querySelector('h3').textContent.toLowerCase();
+      const email = card.querySelector('p').textContent.toLowerCase();
+      
+      if (name.includes(term) || email.includes(term)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary font-bold"><div class="flex justify-around items-center h-16 px-md"><a class="flex flex-col items-center justify-center gap-xs w-16 text-on-surface-variant" data-path="search" href="#"><span class="material-symbols-outlined">search</span><span class="font-label-md text-label-md">Search</span></a><a class="flex flex-col items-center justify-center gap-xs w-16 text-on-surface-variant" data-path="history" href="#"><span class="material-symbols-outlined">history</span><span class="font-label-md text-label-md">History</span></a><a class="flex flex-col items-center justify-center gap-xs w-16 text-on-surface-variant" data-path="sources" href="#"><span class="material-symbols-outlined">database</span><span class="font-label-md text-label-md">Sources</span></a><a class="flex flex-col items-center justify-center gap-xs w-16 text-on-surface-variant" data-path="settings" href="#"><span class="material-symbols-outlined">settings</span><span class="font-label-md text-label-md">Settings</span></a></div></nav></body></html>

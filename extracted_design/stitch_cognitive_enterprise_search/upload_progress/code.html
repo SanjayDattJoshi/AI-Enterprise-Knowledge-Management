@@ -1,0 +1,123 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f7f9fb;}body{overscroll-behavior:none;min-height:100vh;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;transition:all 0.2s ease;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#f7f9fb","surface-variant":"#e0e3e5","on-tertiary-fixed-variant":"#005236","outline":"#75777d","on-error-container":"#93000a","secondary-fixed":"#d8e2ff","surface-tint":"#545f73","outline-variant":"#c5c6cd","error":"#ba1a1a","tertiary":"#00190e","on-primary":"#ffffff","surface-container-highest":"#e0e3e5","surface-dim":"#d8dadc","primary-container":"#1e293b","on-secondary":"#ffffff","surface-container":"#eceef0","surface":"#f7f9fb","secondary-container":"#2170e4","on-secondary-container":"#fefcff","on-primary-fixed":"#111c2d","on-primary-fixed-variant":"#3c475a","on-error":"#ffffff","primary":"#091426","surface-container-lowest":"#ffffff","on-surface":"#191c1e","secondary":"#0058be","inverse-on-surface":"#eff1f3","error-container":"#ffdad6","tertiary-fixed-dim":"#4edea3","on-secondary-fixed":"#001a42","surface-container-high":"#e6e8ea","on-tertiary-fixed":"#002113","secondary-fixed-dim":"#adc6ff","on-surface-variant":"#45474c","on-background":"#191c1e","surface-container-low":"#f2f4f6","tertiary-fixed":"#6ffbbe","inverse-surface":"#2d3133","on-primary-container":"#8590a6","on-tertiary-container":"#00a472","background":"#f7f9fb","inverse-primary":"#bcc7de","on-tertiary":"#ffffff","primary-fixed-dim":"#bcc7de","tertiary-container":"#00301e","on-secondary-fixed-variant":"#004395"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{xs:"4px",gutter:"24px",xxl:"48px",md:"16px","container-margin":"32px",lg:"24px",xl:"32px",base:"4px",sm:"8px"},fontFamily:{"body-sm":["Inter"],"headline-md":["Plus Jakarta Sans"],"body-lg":["Inter"],"display-lg":["Plus Jakarta Sans"],"body-md":["Inter"],"label-md":["Inter"],"headline-lg-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"title-lg":["Plus Jakarta Sans"]},fontSize:{"body-sm":["14px",{lineHeight:"20px",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"display-lg":["48px",{lineHeight:"60px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.05em",fontWeight:"600"}],"headline-lg-mobile":["28px",{lineHeight:"36px",fontWeight:"600"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"600"}],"title-lg":["20px",{lineHeight:"28px",fontWeight:"600"}]}}}}</script></head><body class="bg-surface font-body-md flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-container-margin flex items-center justify-between"><div class="flex items-center gap-sm"><div class="w-8 h-8 bg-primary rounded-xl flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">hub</span></div><span class="font-title-lg text-title-lg text-on-surface tracking-tight">KNOWLEDGE</span></div><div class="flex items-center gap-md"><button class="w-8 h-8 flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined">search</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-xxl bg-surface"><div class="flex flex-col w-full px-4 gap-6 pt-4">
+<!-- Active Upload Card -->
+<div class="bg-surface-container rounded-2xl p-6 shadow-sm relative overflow-hidden group">
+<!-- Subtle pulsing background gradient for active state -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-50 animate-pulse"></div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Employee Handbook.pdf</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Uploading and processing...</p>
+</div>
+</div>
+<button aria-label="Cancel upload" class="w-8 h-8 flex items-center justify-center text-on-surface-variant rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<span class="font-label-md text-label-md text-primary">75% Complete</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">3.2 MB / 4.5 MB</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[75%] transition-all duration-500 ease-out relative">
+<!-- Shine effect on progress bar -->
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-full -translate-x-full animate-[shimmer_2s_infinite]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Processing Stepper -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-6">Processing Pipeline</h3>
+<div class="flex flex-col gap-6 relative">
+<!-- Connecting Line -->
+<div class="absolute left-[19px] top-4 bottom-4 w-[2px] bg-surface-container-highest z-0"></div>
+<!-- Step 1: Uploaded (Done) -->
+<div class="flex gap-4 relative z-10 group">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<div class="flex flex-col pt-2 pb-1">
+<span class="font-label-md text-label-md text-primary uppercase tracking-wider mb-1">Step 1</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Document Uploaded</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Successfully transferred to secure storage.</span>
+</div>
+</div>
+<!-- Step 2: Text Extraction (Active) -->
+<div class="flex gap-4 relative z-10">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0 shadow-md relative">
+<!-- Active Ring Pulse -->
+<div class="absolute inset-0 rounded-full border-2 border-secondary-container animate-[ping_1.5s_cubic-bezier(0,0,0.2,1)_infinite] opacity-50"></div>
+<span class="material-symbols-outlined text-[20px] animate-[spin_3s_linear_infinite]">sync</span>
+</div>
+<div class="flex flex-col pt-2 pb-1">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider mb-1">Step 2</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Text Extraction</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Reading document content and structural formatting using OCR.</span>
+<!-- Skeleton text to show "reading" state -->
+<div class="mt-3 flex flex-col gap-2 opacity-60">
+<div class="h-2 bg-surface-variant rounded w-3/4 animate-pulse"></div>
+<div class="h-2 bg-surface-variant rounded w-5/6 animate-pulse" style="animation-delay: 150ms;"></div>
+<div class="h-2 bg-surface-variant rounded w-1/2 animate-pulse" style="animation-delay: 300ms;"></div>
+</div>
+</div>
+</div>
+<!-- Step 3: Chunking (Pending) -->
+<div class="flex gap-4 relative z-10 opacity-60">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">view_agenda</span>
+</div>
+<div class="flex flex-col pt-2 pb-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">Step 3</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Semantic Chunking</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Pending extraction completion.</span>
+</div>
+</div>
+<!-- Step 4: Embeddings (Pending) -->
+<div class="flex gap-4 relative z-10 opacity-60">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">scatter_plot</span>
+</div>
+<div class="flex flex-col pt-2 pb-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">Step 4</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Generate Embeddings</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Pending chunking completion.</span>
+</div>
+</div>
+<!-- Step 5: Indexed (Pending) -->
+<div class="flex gap-4 relative z-10 opacity-60">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">library_add_check</span>
+</div>
+<div class="flex flex-col pt-2 pb-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">Step 5</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Indexed &amp; Ready</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Awaiting final vector storage.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Educational Tooltip/Helper -->
+<div class="bg-primary-container/20 rounded-xl p-4 flex gap-3 items-start mt-2">
+<span class="material-symbols-outlined text-primary mt-0.5">info</span>
+<div>
+<span class="font-body-sm text-body-sm text-on-surface block mb-1 font-medium">Why does this take a moment?</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">We're not just storing a file; we're breaking it down into understandable concepts so our AI can answer your questions accurately later.</span>
+</div>
+</div>
+</div>
+<style>
+    @keyframes shimmer {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+</style></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary font-bold"><div class="flex justify-around items-center h-16 px-md"><a class="flex flex-col items-center justify-center gap-xs w-16 text-on-surface-variant" data-path="search" href="#"><span class="material-symbols-outlined">search</span><span class="font-label-md text-label-md">Search</span></a><a class="flex flex-col items-center justify-center gap-xs w-16 text-on-surface-variant" data-path="history" href="#"><span class="material-symbols-outlined">history</span><span class="font-label-md text-label-md">History</span></a><a class="flex flex-col items-center justify-center gap-xs w-16 text-on-surface-variant" data-path="sources" href="#"><span class="material-symbols-outlined">database</span><span class="font-label-md text-label-md">Sources</span></a><a class="flex flex-col items-center justify-center gap-xs w-16 text-on-surface-variant" data-path="settings" href="#"><span class="material-symbols-outlined">settings</span><span class="font-label-md text-label-md">Settings</span></a></div></nav></body></html>

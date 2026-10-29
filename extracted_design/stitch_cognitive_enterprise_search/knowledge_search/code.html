@@ -1,0 +1,72 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f7f9fb;}body{overscroll-behavior:none;min-height:100vh;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;transition:all 0.2s ease;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#f7f9fb","surface-variant":"#e0e3e5","on-tertiary-fixed-variant":"#005236","outline":"#75777d","on-error-container":"#93000a","secondary-fixed":"#d8e2ff","surface-tint":"#545f73","outline-variant":"#c5c6cd","error":"#ba1a1a","tertiary":"#00190e","on-primary":"#ffffff","surface-container-highest":"#e0e3e5","surface-dim":"#d8dadc","primary-container":"#1e293b","on-secondary":"#ffffff","surface-container":"#eceef0","surface":"#f7f9fb","secondary-container":"#2170e4","on-secondary-container":"#fefcff","on-primary-fixed":"#111c2d","on-primary-fixed-variant":"#3c475a","on-error":"#ffffff","primary":"#091426","surface-container-lowest":"#ffffff","on-surface":"#191c1e","secondary":"#0058be","inverse-on-surface":"#eff1f3","error-container":"#ffdad6","tertiary-fixed-dim":"#4edea3","on-secondary-fixed":"#001a42","surface-container-high":"#e6e8ea","on-tertiary-fixed":"#002113","secondary-fixed-dim":"#adc6ff","on-surface-variant":"#45474c","on-background":"#191c1e","surface-container-low":"#f2f4f6","tertiary-fixed":"#6ffbbe","inverse-surface":"#2d3133","on-primary-container":"#8590a6","on-tertiary-container":"#00a472","background":"#f7f9fb","inverse-primary":"#bcc7de","on-tertiary":"#ffffff","primary-fixed-dim":"#bcc7de","tertiary-container":"#00301e","on-secondary-fixed-variant":"#004395"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{xs:"4px",gutter:"24px",xxl:"48px",md:"16px","container-margin":"32px",lg:"24px",xl:"32px",base:"4px",sm:"8px"},fontFamily:{"body-sm":["Inter"],"headline-md":["Plus Jakarta Sans"],"body-lg":["Inter"],"display-lg":["Plus Jakarta Sans"],"body-md":["Inter"],"label-md":["Inter"],"headline-lg-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"title-lg":["Plus Jakarta Sans"]},fontSize:{"body-sm":["14px",{lineHeight:"20px",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"display-lg":["48px",{lineHeight:"60px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.05em",fontWeight:"600"}],"headline-lg-mobile":["28px",{lineHeight:"36px",fontWeight:"600"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"600"}],"title-lg":["20px",{lineHeight:"28px",fontWeight:"600"}]}}}}</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-container-margin flex items-center justify-between"><div class="flex items-center gap-sm"><div class="w-8 h-8 bg-primary rounded-xl flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">hub</span></div><span class="font-title-lg text-title-lg text-on-surface tracking-tight">KNOWLEDGE</span></div><div class="flex items-center gap-md"><button class="w-8 h-8 flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined">search</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-xxl bg-surface"><div class="flex flex-col w-full px-4 gap-6 pt-4">
+<div class="flex flex-col gap-6 w-full">
+<div class="flex flex-col gap-2">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Hello, Colleague</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">What can we help you find today?</p>
+</div>
+<div class="relative w-full group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors duration-300 group-focus-within:text-primary text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+<input class="w-full pl-12 pr-12 py-4 bg-surface-container-highest text-on-surface font-body-lg text-body-lg rounded-2xl outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary shadow-sm transition-all placeholder:text-on-surface-variant/60" placeholder="Ask your organization's knowledge..." type="text"/>
+<button class="absolute inset-y-0 right-0 pr-4 flex items-center text-primary opacity-0 group-focus-within:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-3 w-full">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider px-1">Suggested Questions</h2>
+<div class="flex overflow-x-auto gap-3 pb-2 -mx-4 px-4 snap-x">
+<button class="snap-start flex-none px-5 py-3 bg-primary-container text-on-primary-container rounded-full font-body-sm text-body-sm whitespace-nowrap active:scale-95 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">flight_takeoff</span>
+                What's the travel expense policy?
+            </button>
+<button class="snap-start flex-none px-5 py-3 bg-secondary-container text-on-secondary-container rounded-full font-body-sm text-body-sm whitespace-nowrap active:scale-95 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                How many annual leave days do I get?
+            </button>
+<button class="snap-start flex-none px-5 py-3 bg-tertiary-container text-on-tertiary-container rounded-full font-body-sm text-body-sm whitespace-nowrap active:scale-95 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+                Latest HR handbook updates
+            </button>
+</div>
+</div>
+<div class="flex flex-col gap-4 mt-4 w-full">
+<div class="flex justify-between items-end px-1">
+<h2 class="font-title-lg text-title-lg text-on-surface">Recent Activity</h2>
+<button class="font-label-md text-label-md text-primary">View All</button>
+</div>
+<div class="flex flex-col gap-3">
+<a class="flex gap-4 p-4 bg-surface-container rounded-2xl active:bg-surface-container-high transition-colors" href="#">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<div class="flex flex-col justify-center flex-grow min-w-0">
+<p class="font-body-md text-body-md text-on-surface truncate">IT Helpdesk Support SLA</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">2 hours ago</p>
+</div>
+<div class="flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</a>
+<a class="flex gap-4 p-4 bg-surface-container rounded-2xl active:bg-surface-container-high transition-colors" href="#">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<div class="flex flex-col justify-center flex-grow min-w-0">
+<p class="font-body-md text-body-md text-on-surface truncate">Q3 Financial Reports Template</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Yesterday</p>
+</div>
+<div class="flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</a>
+</div>
+</div>
+</div></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary font-bold"><div class="flex justify-around items-center h-16 px-md"><a aria-current="page" class="flex flex-col items-center justify-center gap-xs w-16 text-secondary font-bold" data-path="search" href="#"><span class="material-symbols-outlined">search</span><span class="font-label-md text-label-md">Search</span></a><a class="flex flex-col items-center justify-center gap-xs w-16 text-on-surface-variant" data-path="history" href="#"><span class="material-symbols-outlined">history</span><span class="font-label-md text-label-md">History</span></a><a class="flex flex-col items-center justify-center gap-xs w-16 text-on-surface-variant" data-path="sources" href="#"><span class="material-symbols-outlined">database</span><span class="font-label-md text-label-md">Sources</span></a><a class="flex flex-col items-center justify-center gap-xs w-16 text-on-surface-variant" data-path="settings" href="#"><span class="material-symbols-outlined">settings</span><span class="font-label-md text-label-md">Settings</span></a></div></nav></body></html>

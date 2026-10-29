@@ -1,0 +1,326 @@
+// Prisma schema for AI Enterprise Knowledge Search
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================
+// IDENTITY & ACCESS
+// ============================================================
+
+model Organization {
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users         User[]
+  documents     Document[]
+  conversations Conversation[]
+  searchQueries SearchQuery[]
+  auditLogs     AuditLog[]
+
+  @@index([slug])
+}
+
+model User {
+  id             String   @id @default(uuid())
+  email          String   @unique
+  passwordHash   String
+  firstName      String
+  lastName       String
+  role           UserRole @default(EMPLOYEE)
+  isActive       Boolean  @default(true)
+  organizationId String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization   Organization      @relation(fields: [organizationId], references: [id])
+  refreshTokens  RefreshToken[]
+  documents      Document[]
+  conversations  Conversation[]
+  searchQueries  SearchQuery[]
+  feedback       Feedback[]
+  auditLogs      AuditLog[]
+
+  @@index([email])
+  @@index([organizationId])
+}
+
+enum UserRole {
+  ADMIN
+  EMPLOYEE
+}
+
+model RefreshToken {
+  id        String    @id @default(uuid())
+  tokenHash String    @unique
+  userId    String
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  user      User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([tokenHash])
+}
+
+// ============================================================
+// DOCUMENTS & CHUNKS
+// ============================================================
+
+model Document {
+  id             String           @id @default(uuid())
+  title          String
+  originalName   String
+  storageKey     String           @unique
+  fileSize       Int
+  mimeType       String
+  checksum       String
+  pageCount      Int?
+  metadata       Json?
+  status         DocumentStatus   @default(UPLOADED)
+  uploadedById   String
+  organizationId String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  indexedAt       DateTime?
+
+  uploadedBy     User             @relation(fields: [uploadedById], references: [id])
+  organization   Organization     @relation(fields: [organizationId], references: [id])
+  chunks         DocumentChunk[]
+  versions       DocumentVersion[]
+  ingestionJobs  IngestionJob[]
+
+  @@index([organizationId])
+  @@index([status])
+  @@index([uploadedById])
+}
+
+enum DocumentStatus {
+  UPLOADED
+  PROCESSING
+  INDEXED
+  FAILED
+}
+
+model DocumentVersion {
+  id            String   @id @default(uuid())
+  documentId    String
+  versionNumber Int
+  storageKey    String
+  checksum      String
+  createdById   String
+  createdAt     DateTime @default(now())
+
+  document      Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@unique([documentId, versionNumber])
+}
+
+model DocumentChunk {
+  id           String   @id @default(uuid())
+  documentId   String
+  chunkIndex   Int
+  content      String   @db.Text
+  sectionTitle String?
+  pageNumber   Int?
+  embedding    Unsupported("vector(1536)")?
+  metadata     Json?
+  tokenCount   Int
+  createdAt    DateTime @default(now())
+
+  document     Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
+  @@unique([documentId, chunkIndex])
+}
+
+// ============================================================
+// SEARCH & RAG
+// ============================================================
+
+model SearchQuery {
+  id              String    @id @default(uuid())
+  userId          String
+  organizationId  String
+  conversationId  String?
+  queryText       String    @db.Text
+  latencyMs       Int?
+  createdAt       DateTime  @default(now())
+
+  user             User              @relation(fields: [userId], references: [id])
+  organization     Organization      @relation(fields: [organizationId], references: [id])
+  conversation     Conversation?     @relation(fields: [conversationId], references: [id])
+  retrievalResults RetrievalResult[]
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([createdAt])
+}
+
+model RetrievalResult {
+  id              String   @id @default(uuid())
+  searchQueryId   String
+  chunkId         String
+  similarityScore Float
+  rerankScore     Float?
+  rank            Int
+  createdAt       DateTime @default(now())
+
+  searchQuery     SearchQuery  @relation(fields: [searchQueryId], references: [id], onDelete: Cascade)
+
+  @@index([searchQueryId])
+}
+
+// ============================================================
+// CONVERSATIONS & MESSAGES
+// ============================================================
+
+model Conversation {
+  id             String   @id @default(uuid())
+  userId         String
+  organizationId String
+  title          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user           User          @relation(fields: [userId], references: [id])
+  organization   Organization  @relation(fields: [organizationId], references: [id])
+  messages       Message[]
+  searchQueries  SearchQuery[]
+
+  @@index([userId])
+  @@index([organizationId])
+}
+
+model Message {
+  id             String        @id @default(uuid())
+  conversationId String
+  role           MessageRole
+  content        String        @db.Text
+  createdAt      DateTime      @default(now())
+
+  conversation   Conversation  @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  answerSources  AnswerSource[]
+  feedback       Feedback[]
+
+  @@index([conversationId])
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+  SYSTEM
+}
+
+model AnswerSource {
+  id            String   @id @default(uuid())
+  messageId     String
+  chunkId       String
+  citationLabel String
+  createdAt     DateTime @default(now())
+
+  message       Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@index([messageId])
+}
+
+// ============================================================
+// FEEDBACK & ANALYTICS
+// ============================================================
+
+model Feedback {
+  id        String     @id @default(uuid())
+  userId    String
+  messageId String
+  rating    RatingType
+  comment   String?
+  createdAt DateTime   @default(now())
+
+  user      User       @relation(fields: [userId], references: [id])
+  message   Message    @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([messageId])
+}
+
+enum RatingType {
+  HELPFUL
+  NOT_HELPFUL
+}
+
+// ============================================================
+// INGESTION PIPELINE
+// ============================================================
+
+model IngestionJob {
+  id           String          @id @default(uuid())
+  documentId   String
+  status       JobStatus       @default(PENDING)
+  attempts     Int             @default(0)
+  maxAttempts  Int             @default(3)
+  errorMessage String?
+  startedAt    DateTime?
+  completedAt  DateTime?
+  createdAt    DateTime        @default(now())
+
+  document     Document        @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
+  @@index([status])
+}
+
+enum JobStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  RETRYING
+}
+
+// ============================================================
+// AUDIT LOGGING
+// ============================================================
+
+model AuditLog {
+  id             String      @id @default(uuid())
+  userId         String?
+  organizationId String
+  action         AuditAction
+  resourceType   String
+  resourceId     String?
+  details        Json?
+  ipAddress      String?
+  userAgent      String?
+  createdAt      DateTime    @default(now())
+
+  user           User?        @relation(fields: [userId], references: [id])
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+enum AuditAction {
+  USER_LOGIN
+  USER_LOGOUT
+  USER_REGISTER
+  DOCUMENT_UPLOAD
+  DOCUMENT_DELETE
+  DOCUMENT_PROCESS
+  SEARCH_QUERY
+  FEEDBACK_SUBMIT
+  USER_DEACTIVATE
+  USER_ACTIVATE
+  ROLE_CHANGE
+}
