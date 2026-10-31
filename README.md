@@ -1,36 +1,31 @@
-# AI Enterprise Knowledge Search
+# AI Enterprise Knowledge Search & Management
 
-Internal enterprise document search with AI-powered Q&A built with **Node.js, Express, React, and PostgreSQL (`pgvector`)**.
+Internal enterprise document search with AI-powered Q&A built with **React, Node.js, Express, and PostgreSQL**.
 
 ## Tech Stack
-- **Frontend**: React (Vite, TailwindCSS, TanStack React Query, Zustand)
-- **Backend**: Node.js + Express (TypeScript, Prisma ORM, Native In-Memory Queue)
-- **Database & Vectors**: PostgreSQL 16 with `pgvector`
+- **Frontend**: React (Vite, TailwindCSS, TanStack React Query, Zustand) — Pure JavaScript / JSX (No TypeScript)
+- **Backend**: Node.js + Express — Native ES Modules (No TypeScript)
+- **Database**: PostgreSQL (`pg`) with automatic table creation & graceful fallback
 - **File Storage**: Local filesystem storage (`/uploads`)
 
 ## Quick Start
 
 ### Prerequisites
 - Node.js 20+
-- PostgreSQL (with `pgvector` extension) or Docker
-- npm or pnpm
+- npm
+- PostgreSQL (optional: automatic in-memory fallback enabled if offline)
 
-### Setup
+### Setup & Run
 
 ```bash
-# Clone and install dependencies
+# 1. Clone the repository
+git clone https://github.com/SanjayDattJoshi/AI-Enterprise-Knowledge-Management.git
+cd AI-Enterprise-Knowledge-Management
+
+# 2. Install dependencies
 npm install
 
-# Start PostgreSQL with pgvector (optional if you have local/cloud PostgreSQL)
-npm run docker:up
-
-# Run database migrations
-npm run db:migrate
-
-# Seed with default admin, employee, and sample documents
-npm run db:seed
-
-# Start development servers
+# 3. Start development servers (frontend on :3000, backend on :4000)
 npm run dev
 ```
 
@@ -39,27 +34,33 @@ npm run dev
 - **Backend API**: http://localhost:4000 (Health check: `/health`)
 - **Default Admin**: `admin@enterprise.ai` / `password123`
 - **Default Employee**: `employee@enterprise.ai` / `password123`
-- **Prisma Studio**: `npm run db:studio`
 
 ## Project Structure
 
 ```
-├── client/          # React + Vite frontend
-├── server/          # Express + TypeScript backend
+├── client/          # Pure React + Vite frontend (JSX)
 │   └── src/
-│       ├── modules/ # Feature modules (Auth, Documents, Search, Admin)
-│       ├── ai/      # RAG pipeline & embedding clients
-│       ├── queue/   # Async background ingestion
-│       └── storage/ # Local filesystem storage
-├── docs/            # Documentation
-└── docker/          # Docker compose for PostgreSQL (pgvector)
+│       ├── app/         # Router & App shell
+│       ├── components/  # UI, Search, Admin & Document components
+│       ├── features/    # Auth state & stores
+│       ├── lib/         # API clients & utilities
+│       └── pages/       # Search, Documents, Admin, Auth views
+├── server/          # Pure Node.js + Express backend (ES Modules)
+│   └── src/
+│       ├── ai/          # RAG pipeline & response synthesis
+│       ├── config/      # Environment & logger configuration
+│       ├── db/          # PostgreSQL client & automatic database setup
+│       ├── middleware/  # JWT auth & error handling
+│       ├── modules/     # Feature routes (Auth, Documents, Search, Admin, Feedback)
+│       └── storage/     # Local filesystem document storage
+├── uploads/         # Local document storage directory
+└── docs/            # Architecture & specifications
 ```
 
 ## Key Features
-- ✅ Document upload (PDF/DOCX/TXT)
-- ✅ Local filesystem storage (no S3/MinIO required)
-- ✅ Automatic background indexing with vector embeddings (no Redis required)
-- ✅ Natural language semantic search with PostgreSQL `pgvector`
-- ✅ Cited, grounded answers with source modal preview
-- ✅ Organization-level access control & Admin dashboard
-- 🔒 Security-first design
+- ✅ **Document Management**: Upload PDF, DOCX, and TXT files with auto-text extraction & indexing
+- ✅ **AI-Powered Search (RAG)**: Natural language queries with grounded answers and inline source citations `[1]`, `[2]`
+- ✅ **Document Source Viewer**: Modal preview of cited documents with matched excerpt highlights
+- ✅ **Enterprise Access Control**: Role-based access (Admin & Employee) with JWT authentication
+- ✅ **Admin Dashboard**: System analytics, document management, and organization user overview
+- ✅ **Simple & Robust**: Zero TypeScript overhead, zero fragile CLI builds, works out of the box with standard `npm run dev`

@@ -1,7 +1,7 @@
 {
   "name": "ai-enterprise-knowledge-search",
   "version": "1.0.0",
-  "description": "Internal web app for enterprise document search with AI-powered Q&A",
+  "description": "Internal enterprise knowledge search with AI-powered Q&A",
   "private": true,
   "workspaces": [
     "client",
@@ -11,21 +11,10 @@
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:client": "npm run dev --workspace=client",
     "dev:server": "npm run dev --workspace=server",
-    "build": "npm run build --workspace=client && npm run build --workspace=server",
-    "test": "npm run test --workspaces",
-    "lint": "eslint . --ext .ts,.tsx",
-    "docker:up": "docker-compose up -d",
-    "docker:down": "docker-compose down",
-    "docker:build": "docker-compose build",
-    "db:migrate": "npm run db:migrate --workspace=server",
-    "db:generate": "npm run db:generate --workspace=server",
-    "db:seed": "npm run db:seed --workspace=server",
-    "db:studio": "npm run db:studio --workspace=server"
+    "build": "npm run build --workspace=client",
+    "start": "npm run start --workspace=server"
   },
   "devDependencies": {
-    "@types/node": "^20.10.0",
-    "concurrently": "^8.2.2",
-    "eslint": "^8.55.0",
-    "typescript": "^5.3.2"
+    "concurrently": "^8.2.2"
   }
 }
